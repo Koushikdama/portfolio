@@ -1,0 +1,627 @@
+/**
+* Modern UI Enhancements for Portfolio
+* Custom styles to modernize the existing template
+*/
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/*--------------------------------------------------------------
+# Modern Variables & Root Styles
+--------------------------------------------------------------*/
+:root {
+  /* Modern Gradient Colors */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  
+  /* Solid Colors */
+  --color-primary: #667eea;
+  --color-secondary: #764ba2;
+  --color-accent: #12d640;
+  --color-dark: #1e1e2e;
+  --color-darker: #0a0a0f;
+  --color-light: #ffffff;
+  
+  /* Backgrounds */
+  --bg-dark: linear-gradient(135deg, #0a0a0f 0%, #1e1e2e 100%);
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --bg-card-hover: rgba(255, 255, 255, 0.08);
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
+  
+  /* Transitions */
+  --transition-fast: all 0.2s ease;
+  --transition-normal: all 0.3s ease;
+  --transition-slow: all 0.5s ease;
+}
+
+/*--------------------------------------------------------------
+# Enhanced General Styles
+--------------------------------------------------------------*/
+body {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  color: #fff;
+  position: relative;
+  background: transparent;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  background: var(--bg-dark);
+  background-size: cover;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  z-index: -1;
+}
+
+/* Add subtle animated background pattern */
+body::after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+  animation: backgroundMove 20s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes backgroundMove {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', 'Raleway', sans-serif;
+  font-weight: 700;
+}
+
+a {
+  color: var(--color-accent);
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/*--------------------------------------------------------------
+# Modern Header Enhancements
+--------------------------------------------------------------*/
+#header {
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+#header h1 {
+  font-size: 56px;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 0.8s ease;
+}
+
+#header h2 {
+  font-size: 26px;
+  margin-top: 20px;
+  font-weight: 500;
+  animation: fadeInUp 1s ease;
+}
+
+#header h2 span {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  border-bottom: 3px solid transparent;
+  border-image: var(--gradient-accent);
+  border-image-slice: 1;
+  padding-bottom: 6px;
+  font-weight: 700;
+}
+
+#header .social-links a {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition-normal);
+}
+
+#header .social-links a:hover {
+  background: var(--gradient-primary);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: var(--shadow-glow);
+  border-color: transparent;
+}
+
+@media (max-width: 992px) {
+  #header h1 {
+    font-size: 42px;
+  }
+  #header h2 {
+    font-size: 22px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Modern Navigation
+--------------------------------------------------------------*/
+.nav-menu a {
+  position: relative;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: var(--transition-normal);
+}
+
+.nav-menu a::before {
+  background: var(--gradient-primary);
+  height: 3px;
+  border-radius: 2px;
+  width: 0;
+}
+
+.nav-menu a:hover::before,
+.nav-menu .active > a::before {
+  width: 100%;
+}
+
+.nav-menu a:hover,
+.nav-menu .active > a {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/*--------------------------------------------------------------
+# Modern Section Styles
+--------------------------------------------------------------*/
+section .container {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 768px) {
+  section .container {
+    padding: 30px 20px;
+  }
+}
+
+.section-title h2 {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title h2::after {
+  background: var(--gradient-primary);
+  height: 2px;
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+}
+
+/*--------------------------------------------------------------
+# Modern Card Styles
+--------------------------------------------------------------*/
+.modern-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition-normal);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: var(--transition-normal);
+}
+
+.modern-card:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.modern-card:hover::before {
+  transform: scaleX(1);
+}
+
+/*--------------------------------------------------------------
+# About Section Enhancements
+--------------------------------------------------------------*/
+.about-me img {
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition-normal);
+}
+
+.about-me img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+  border-color: rgba(102, 126, 234, 0.5);
+}
+
+.about-me .content ul li {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition-fast);
+}
+
+.about-me .content ul li:hover {
+  padding-left: 10px;
+  color: var(--color-accent);
+}
+
+.about-me .content ul li i {
+  color: var(--color-accent);
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/*--------------------------------------------------------------
+# Interests Section Enhancements
+--------------------------------------------------------------*/
+.interests .icon-box {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.interests .icon-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: var(--transition-normal);
+  z-index: -1;
+}
+
+.interests .icon-box:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.interests .icon-box:hover::before {
+  opacity: 0.1;
+}
+
+.interests .icon-box i {
+  font-size: 36px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: var(--transition-normal);
+}
+
+.interests .icon-box:hover i {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.interests .icon-box h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/*--------------------------------------------------------------
+# Services/Education Section Enhancements
+--------------------------------------------------------------*/
+.services .icon-box {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 45px 35px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.services .icon-box::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--gradient-primary);
+  border-radius: 20px;
+  opacity: 0;
+  z-index: -1;
+  transition: var(--transition-normal);
+}
+
+.services .icon-box:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.services .icon-box:hover::before {
+  opacity: 1;
+}
+
+.services .icon-box .icon {
+  background: var(--gradient-primary);
+  box-shadow: var(--shadow-md);
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+}
+
+.services .icon-box:hover .icon {
+  background: var(--gradient-accent);
+  transform: scale(1.1) rotate(5deg);
+}
+
+.services .icon-box h4 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 20px 0 15px 0;
+}
+
+.services .icon-box h4 a {
+  color: #fff;
+  transition: var(--transition-fast);
+}
+
+.services .icon-box:hover h4 a {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/*--------------------------------------------------------------
+# Portfolio Section Enhancements
+--------------------------------------------------------------*/
+.portfolio .portfolio-item {
+  margin-bottom: 35px;
+}
+
+.portfolio #portfolio-flters li {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: var(--transition-normal);
+}
+
+.portfolio #portfolio-flters li:hover,
+.portfolio #portfolio-flters li.filter-active {
+  background: var(--gradient-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: transparent;
+}
+
+.portfolio .portfolio-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition-normal);
+}
+
+.portfolio .portfolio-wrap:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.portfolio .portfolio-wrap .portfolio-info {
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.portfolio .portfolio-wrap .portfolio-info h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.portfolio .portfolio-wrap .portfolio-info p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a {
+  background: var(--gradient-primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+  margin: 0 5px;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a:hover {
+  background: var(--gradient-accent);
+  transform: scale(1.15);
+}
+
+/*--------------------------------------------------------------
+# Contact Section Enhancements  
+--------------------------------------------------------------*/
+.contact .info-box {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition-normal);
+  text-align: center;
+}
+
+.contact .info-box:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.contact .info-box i {
+  font-size: 32px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+}
+
+.contact .info-box h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.contact .info-box p {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.contact .social-links a {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-normal);
+  margin: 0 5px;
+}
+
+.contact .social-links a:hover {
+  background: var(--gradient-primary);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: var(--shadow-glow);
+  border-color: transparent;
+}
+
+/*--------------------------------------------------------------
+# Animations
+--------------------------------------------------------------*/
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gradient-accent);
+}
+
+/*--------------------------------------------------------------
+# Responsive Utilities
+--------------------------------------------------------------*/
+@media (max-width: 768px) {
+  .modern-card {
+    padding: 20px;
+  }
+  
+  .services .icon-box {
+    padding: 30px 20px;
+  }
+  
+  #header h1 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 576px) {
+  section .container {
+    padding: 30px 15px;
+    border-radius: 15px;
+  }
+  
+  .section-title h2 {
+    font-size: 14px;
+  }
+}
